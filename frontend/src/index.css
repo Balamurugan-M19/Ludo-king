@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap');
+
+:root {
+  --bg-primary: #0f172a; /* Slate 900 */
+  --bg-secondary: #1e293b; /* Slate 800 */
+  --text-primary: #f8fafc; /* Slate 50 */
+  --text-secondary: #94a3b8; /* Slate 400 */
+  
+  --accent-primary: #3b82f6; /* Blue 500 */
+  --accent-hover: #2563eb; /* Blue 600 */
+  --accent-glow: rgba(59, 130, 246, 0.5);
+  
+  --ludo-red: #ef4444;
+  --ludo-green: #22c55e;
+  --ludo-yellow: #eab308;
+  --ludo-blue: #3b82f6;
+  
+  --ludo-red-glow: rgba(239, 68, 68, 0.8);
+  --ludo-green-glow: rgba(34, 197, 94, 0.8);
+  --ludo-yellow-glow: rgba(234, 179, 8, 0.8);
+  --ludo-blue-glow: rgba(59, 130, 246, 0.8);
+
+  --glass-bg: rgba(30, 41, 59, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.6);
+}
+
+@keyframes playablePulse {
+  0% { box-shadow: 0 0 10px white, 0 0 20px currentColor; transform: scale(1.1); }
+  50% { box-shadow: 0 0 20px white, 0 0 40px currentColor; transform: scale(1.25); }
+  100% { box-shadow: 0 0 10px white, 0 0 20px currentColor; transform: scale(1.1); }
+}
+
+@keyframes safeStarGlow {
+  0% { text-shadow: 0 0 5px white; opacity: 0.5; }
+  50% { text-shadow: 0 0 15px gold; opacity: 1; }
+  100% { text-shadow: 0 0 5px white; opacity: 0.5; }
+}
+
+@keyframes boardFloat {
+  0% { transform: perspective(1000px) rotateX(10deg) translateY(0px); }
+  50% { transform: perspective(1000px) rotateX(10deg) translateY(-10px); }
+  100% { transform: perspective(1000px) rotateX(10deg) translateY(0px); }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e1b4b);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  background-attachment: fixed;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Reusable Glassmorphism Card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* Inputs */
+.input-field {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--accent-primary);
+}
+
+/* Layout Utilities */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
